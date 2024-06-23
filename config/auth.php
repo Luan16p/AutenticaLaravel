@@ -38,8 +38,12 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'usuarios',
         ],
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'usuarios',
+        ]
     ],
 
     /*
@@ -60,15 +64,15 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'usuarios' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Usuarios::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'passwords' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Passwords::class,
+        ]
     ],
 
     /*
@@ -85,15 +89,6 @@ return [
     | they have less time to be guessed. You may change this as needed.
     |
     */
-
-    'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-    ],
 
     /*
     |--------------------------------------------------------------------------
